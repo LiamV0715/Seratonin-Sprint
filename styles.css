@@ -11,8 +11,8 @@ body, html {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background-image: url('background.jpg'); /* Replace 'background.jpg' with your background image */
-    background-repeat: repeat-x; /* Repeat the background horizontally */
+    background-image: url('assets/235059.png'); /* Replace 'background.jpg' with your background image */
+    background-repeat: repeat; /* Repeat the background horizontally */
     animation: scrollBackground 10s linear infinite; /* Adjust animation duration as needed */
   }
   
@@ -34,9 +34,8 @@ body, html {
   
   #player {
     position: absolute;
-    width: 50px;
-    height: 100px;
-    background-color: #FF6347; /* Tomato */
+    width: 200px;
+    height: 200px;
     bottom: 0;
     left: 50px; /* Initial position */
   }
