@@ -47,4 +47,14 @@ body, html {
     background-color: #2E8B57; /* Sea green */
     bottom: 0;
   }
-  
+
+  #canvas1 {
+    background-color: none;
+    fill: aqua;
+  }
+
+  #coin {
+    
+    animation: backwards;
+    position: absolute;
+  }

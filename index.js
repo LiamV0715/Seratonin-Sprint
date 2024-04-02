@@ -1,3 +1,8 @@
+// let getElementById('canvas1') = loadCanvas
+// loadCanvas.display = 'hidden'
+// window.addEventListener('load', function loaded(){
+//   isLoaded = true
+
 function newImage(url) {
   let image = document.createElement("img");
   image.src = url;
@@ -29,26 +34,24 @@ document.addEventListener("keydown", (event) => {
     }
   } else if (event.key === "s") {
     // 's' for crouching
-    
-      isCrouching = true;
-      player.style.height = "100px";
-      if (isFacingLeft) {
-        player.src = "assets/crouch-brain-left.png";
-      } else {
-        player.src = "assets/crouch-brain-right.png";
-        isFacingRight = true;
-      }
-    
+
+    isCrouching = true;
+    player.style.height = "100px";
+    if (isFacingLeft) {
+      player.src = "assets/crouch-brain-left.png";
+    } else {
+      player.src = "assets/crouch-brain-right.png";
+      isFacingRight = true;
+    }
   } else if (event.key === "a") {
     isMovingLeft = true;
     isFacingLeft = true;
     isFacingRight = false;
     isMovingRight = false;
     if (isCrouching) {
-        player.src = 'assets/crouch-brain-left.png'
-    }
-    else {
-        player.src = 'assets/fast-brain-left.png'
+      player.src = "assets/crouch-brain-left.png";
+    } else {
+      player.src = "assets/fast-brain-left.png";
     }
     moveLeft();
   } else if (event.key === "d") {
@@ -57,41 +60,47 @@ document.addEventListener("keydown", (event) => {
     isFacingLeft = false;
     isMovingLeft = false;
     if (isCrouching) {
-        player.src = 'assets/crouch-brain-right.png'
-    }
-    else {
-        player.src = 'assets/fast-brain-right.png'
+      player.src = "assets/crouch-brain-right.png";
+    } else {
+      player.src = "assets/fast-brain-right.png";
     }
     moveRight();
   }
 });
 
-
 document.addEventListener("keyup", (event) => {
   if (event.key === "s") {
     // Restore player height when 's' key is released
-    isCrouching = false; 
+    isCrouching = false;
     player.style.height = "200px";
     if (isMovingLeft) {
-    player.src = "assets/fast-brain-left.png";
-    } else if (isMovingRight){
-        player.src = 'assets/fast-brain-right.png'
+      player.src = "assets/fast-brain-left.png";
+    } else if (isMovingRight) {
+      player.src = "assets/fast-brain-right.png";
     } else if (isFacingLeft) {
-        player.src = 'assets/brain-left.png'
+      player.src = "assets/brain-left.png";
     } else {
-        player.src = 'assets/brain-right.png'
-        isFacingRight = true;
+      player.src = "assets/brain-right.png";
+      isFacingRight = true;
     }
   } else if (event.key === "a") {
     // Stop moving left when 'a' key is released
     isMovingLeft = false;
-    player.src = "assets/brain-left.png";
     isFacingLeft = true;
+    if (isCrouching) {
+      player.src = "assets/crouch-brain-left.png";
+    } else {
+      player.src = "assets/brain-left.png";
+    }
   } else if (event.key === "d") {
     // Stop moving right when 'd' key is released
     isMovingRight = false;
-    player.src = "assets/brain-right.png";
     isFacingRight = true;
+    if (isCrouching) {
+      player.src = "assets/crouch-brain-right.png";
+    } else {
+      player.src = "assets/brain-right.png";
+    }
   }
 });
 
@@ -160,7 +169,7 @@ function moveRight() {
   requestAnimationFrame(moveRight);
 }
 
-function checkCollisions() {
+function checkFloorCollisions() {
   const playerRect = player.getBoundingClientRect();
   const floorRect = floor.getBoundingClientRect();
 
@@ -170,4 +179,71 @@ function checkCollisions() {
   }
 }
 
-setInterval(checkCollisions, 10); // Check collisions periodically
+setInterval(checkFloorCollisions, 5); // Check collisions periodically
+
+//coin entity and then score tracker
+//coin entity should dissapear on collision with player
+//should also move on a path
+
+class Coin {
+  constructor(startTime, yHeight) {
+    this.startTime = startTime; // Start time of the coin
+    this.y = yHeight; // Y height of the coin
+    this.x = window.innerWidth; // Initial x position (start from the right edge of the window)
+    this.width = 150; // Width of the coin
+    this.height = 150; // Height of the coin
+    this.speed = 2; // Speed at which the coin moves
+    this.element = document.createElement("img"); // Create img element
+    this.element.src = "assets/seratonin-coin.png"; // Source of the coin image
+    this.element.style.position = "absolute"; // Set position to absolute
+    this.element.style.width = this.width + "px"; // Set width
+    this.element.style.height = this.height + "px"; // Set height
+    this.element.style.top = this.y + "px"; // Set initial y position
+    this.element.style.left = this.x + "px"; // Set initial x position
+    document.body.appendChild(this.element); // forgot to append coin element to the DOM
+  }nmc            
+
+  move() {
+    // Move the coin to the left
+    this.x -= this.speed;
+    this.element.style.left = this.x + "px";
+
+    // Check for collision with player
+    if (
+      this.x < player.offsetLeft + player.offsetWidth &&
+      this.x + this.width > player.offsetLeft &&
+      this.y < player.offsetTop + player.offsetHeight &&
+      this.y + this.height > player.offsetTop
+    ) {
+      // Collision detected, remove the coin
+      this.element.remove();
+      return true; // Return true to indicate collision
+    }
+
+    return false; // Return false to indicate no collision
+  }
+}
+
+// Usage example:
+// Create a new coin with start time 0 and y height 200
+const coin1 = new Coin(200, 500);
+
+// Update loop to move the coin
+function update() {
+  // Move the coin
+  const collided = coin1.move();
+  if (collided) {
+    // Handle collision, e.g., increase score
+    console.log("Coin collected!");
+  }
+
+  // Request the next frame
+  requestAnimationFrame(update);
+}
+
+// Start the update loop
+update();
+
+// }) else (!isLoaded) {
+//  display.canvas1 = 'visible'
+// }
