@@ -107,8 +107,8 @@ document.addEventListener("keyup", (event) => {
 
 function jump() {
   let initialHeight = parseInt(player.style.bottom) || 0;
-  const jumpHeight = 150; // Adjust jump height as needed
-  const jumpDuration = 2000; // Adjust jump duration as needed
+  const jumpHeight = 300; // Adjust jump height as needed
+  const jumpDuration = 1500; // Adjust jump duration as needed
 
   const startTime = Date.now();
 
@@ -138,7 +138,7 @@ function glideDown() {
     currentHeight -= 2; // Adjust glide speed as needed
     player.style.bottom = Math.min(currentHeight, floorHeight) + "px";
 
-    if (currentHeight > 0) {
+    if (currentHeight > floorHeight) {
       requestAnimationFrame(animateGlide);
     }
   }
@@ -241,8 +241,28 @@ class Coin {
 
 // Usage example:
 // Create a new coin with start time 0 and y height 200
-const coin1 = new Coin(200, 600);
+const coin1 = new Coin(100, 600);
 const coin2 = new Coin(1000, 500); // Adjusted start time for coin2
+const coin3 = new Coin(5000, 600);
+const coin4 = new Coin(10200, 500);
+const coin5 = new Coin(15000, 600);
+const coin6 = new Coin(20000, 500);
+const coin7 = new Coin(25000, 600);
+const coin8 = new Coin(30000, 500); 
+const coin9 = new Coin(35000, 600);
+const coin10 = new Coin(40200, 500);
+const coin11 = new Coin(45000, 600);
+const coin12 = new Coin(50000, 500);
+const coin13 = new Coin(60000, 600);//arc start
+const coin14 = new Coin(60500, 400); //brief arc
+const coin15 = new Coin(61000, 300);//peak
+const coin16 = new Coin(61500, 400);//arc down
+const coin17 = new Coin(62000, 600);//arc end
+const coin18 = new Coin(63000, 500);
+const coin19 = new Coin(63250, 600);
+const coin20 = new Coin(64000, 500); 
+const coin21 = new Coin(64500, 600);
+const coin22 = new Coin(68000, 500);
 
 // Update loop to move the coin
 function update(currentTime) {
@@ -250,7 +270,7 @@ function update(currentTime) {
   const collided1 = coin1.move(currentTime);
   if (collided1 && !coin1.collected) {
     // Handle collision, e.g., increase score
-    score++; // Increase score
+    score += 1;
     document.getElementById("score-value").textContent = score; // Update score display
     coin1.collected = true; // Mark coin as collected
     console.log("Coin 1 collected!");
@@ -260,14 +280,148 @@ function update(currentTime) {
   const collided2 = coin2.move(currentTime);
   if (collided2 && !coin2.collected) {
     // Handle collision, e.g., increase score
-    score++; // Increase score
+    score += 1;
     document.getElementById("score-value").textContent = score; // Update score display
     coin2.collected = true; // Mark coin as collected
     console.log("Coin 2 collected!");
   }
+  const collided3 = coin3.move(currentTime);
+  if (collided3 && !coin3.collected) {
+    // Handle collision, e.g., increase score
+    score += 1;
+    document.getElementById("score-value").textContent = score; // Update score display
+    coin3.collected = true; // Mark coin as collected
+    console.log("Coin 3 collected!");
+  }
+
+  const collided4 = coin4.move(currentTime);
+  if (collided4 && !coin4.collected) {
+    // Handle collision, e.g., increase score
+    score += 1;
+    document.getElementById("score-value").textContent = score; // Update score display
+    coin4.collected = true; // Mark coin as collected
+    console.log("Coin 4 collected!");
+  }const collided5 = coin5.move(currentTime);
+  if (collided5 && !coin5.collected) {
+    score += 1;
+    document.getElementById("score-value").textContent = score; // Update score display
+    coin5.collected = true; // Mark coin as collected
+    console.log("Coin 5 collected!");
+  }
+  const collided6 = coin6.move(currentTime);
+  if (collided6 && !coin6.collected) {
+    score += 1;
+    document.getElementById("score-value").textContent = score; // Update score display
+    coin6.collected = true; // Mark coin as collected
+    console.log("Coin 6 collected!");
+  }
+  const collided7 = coin7.move(currentTime);
+  if (collided7 && !coin7.collected) {
+    score += 1;
+    document.getElementById("score-value").textContent = score; // Update score display
+    coin7.collected = true; // Mark coin as collected
+    console.log("Coin 7 collected!");
+  }
+
+  const collided8 = coin8.move(currentTime);
+  if (collided8 && !coin8.collected) {
+    score += 1;
+    document.getElementById("score-value").textContent = score; // Update score display
+    coin8.collected = true; // Mark coin as collected
+    console.log("Coin 8 collected!");
+  }
+  const collided9 = coin9.move(currentTime);
+  if (collided9 && !coin9.collected) {
+    // Handle collision, e.g., increase score
+    score += 1;
+    document.getElementById("score-value").textContent = score; // Update score display
+    coin9.collected = true; // Mark coin as collected
+    console.log("Coin 9 collected!");
+  }
+
+  const collided10 = coin10.move(currentTime);
+  if (collided10 && !coin10.collected) {
+    // Handle collision, e.g., increase score
+    score += 1;
+    document.getElementById("score-value").textContent = score; // Update score display
+    coin10.collected = true; // Mark coin as collected
+    console.log("Coin 4 collected!");
+  }const collided11 = coin11.move(currentTime);
+  if (collided11 && !coin11.collected) {
+    score += 1;
+    document.getElementById("score-value").textContent = score; // Update score display
+    coin11.collected = true; // Mark coin as collected
+    console.log("Coin 11 collected!");
+  }
+  const collided12 = coin12.move(currentTime);
+  if (collided12 && !coin12.collected) {
+    score += 1;
+    document.getElementById("score-value").textContent = score; 
+    coin12.collected = true; 
+    console.log("Coin 12 collected!");
+  } const collided13 = coin13.move(currentTime);
+  if (collided13 && !coin13.collected) {
+    score += 1;
+    document.getElementById("score-value").textContent = score; 
+    coin13.collected = true; 
+    console.log("Coin 3 collected!");
+  } const collided14 = coin14.move(currentTime);
+  if (collided14 && !coin14.collected) {
+    score += 1;
+    document.getElementById("score-value").textContent = score; 
+    coin14.collected = true; 
+    console.log("Coin 14 collected!");
+  } const collided15 = coin15.move(currentTime);
+  if (collided15 && !coin15.collected) {
+    score += 1;
+    document.getElementById("score-value").textContent = score; 
+    coin15.collected = true; // Mark coin as collected
+    console.log("Coin 15 collected!");
+  } const collided16 = coin16.move(currentTime);
+  if (collided16 && !coin16.collected) {
+    score += 1;
+    document.getElementById("score-value").textContent = score; 
+    coin16.collected = true; // Mark coin as collected
+    console.log("Coin 16 collected!");
+  } const collided17 = coin17.move(currentTime);
+  if (collided17 && !coin17.collected) {
+    score += 1;
+    document.getElementById("score-value").textContent = score; 
+    coin17.collected = true; // Mark coin as collected
+    console.log("Coin 17 collected!");
+  } const collided18 = coin18.move(currentTime);
+  if (collided18 && !coin18.collected) {
+    score += 1;
+    document.getElementById("score-value").textContent = score; 
+    coin18.collected = true; // Mark coin as collected
+    console.log("Coin 18 collected!");
+  } const collided19 = coin19.move(currentTime);
+  if (collided19 && !coin19.collected) {
+    score += 1;
+    document.getElementById("score-value").textContent = score; 
+    coin19.collected = true; 
+    console.log("Coin 19 collected!");
+  } const collided20 = coin20.move(currentTime);
+  if (collided20 && !coin20.collected) {
+    score += 1;
+    document.getElementById("score-value").textContent = score; 
+    coin20.collected = true; 
+    console.log("Coin 20 collected!");
+  } const collided21 = coin21.move(currentTime);
+  if (collided21 && !coin21.collected) {
+    score += 1;
+    document.getElementById("score-value").textContent = score; 
+    coin21.collected = true; 
+    console.log("Coin 21 collected!");
+  } const collided22 = coin22.move(currentTime);
+  if (collided22 && !coin22.collected) {
+    score += 1;
+    document.getElementById("score-value").textContent = score; 
+    coin22.collected = true; // Mark coin as collected
+    console.log("Coin 22 collected!");
+  }
   requestAnimationFrame(update);
 }
-
 // Start the update loop
 requestAnimationFrame(update);
 
