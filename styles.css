@@ -11,7 +11,7 @@ body, html {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: url("assets/235059.png") repeat-x;
+  background: url("assets/JS Game background v1.png") repeat-x;
     height: 1000px;
     width: 7680px;
     animation: slide 5s linear infinite; /* Adjust animation duration as needed */
@@ -52,8 +52,9 @@ body, html {
   position: absolute;
   width: 100%;
   height: 40px;
-  background-color: #2E8B57; /* Sea green */
+  background-color: #000000; 
   bottom: 0;
+  z-index: 5;
 }
 
 #canvas1 {
