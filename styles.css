@@ -58,3 +58,13 @@ body, html {
     animation: backwards;
     position: absolute;
   }
+
+  #score {
+    display:block;
+    position: relative;
+    top: 0px;
+    left: 20px;
+    color: white;
+    font-size: 28px;
+    font-family: Arial, sans-serif;
+  }

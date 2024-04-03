@@ -13,6 +13,7 @@ function newImage(url) {
 
 const player = newImage("assets/brain-right.png");
 const floor = document.getElementById("floor");
+let score = 0; //set score to 0 at start
 
 let isJumping = false;
 let isCrouching = false;
@@ -192,7 +193,7 @@ class Coin {
     this.x = window.innerWidth; // Initial x position (start from the right edge of the window)
     this.width = 150; // Width of the coin
     this.height = 150; // Height of the coin
-    this.speed = 2; // Speed at which the coin moves
+    this.speed = 3; // Speed at which the coin moves
     this.element = document.createElement("img"); // Create img element
     this.element.src = "assets/seratonin-coin.png"; // Source of the coin image
     this.element.style.position = "absolute"; // Set position to absolute
@@ -200,49 +201,75 @@ class Coin {
     this.element.style.height = this.height + "px"; // Set height
     this.element.style.top = this.y + "px"; // Set initial y position
     this.element.style.left = this.x + "px"; // Set initial x position
-    document.body.appendChild(this.element); // forgot to append coin element to the DOM
-  }nmc            
+    document.body.appendChild(this.element); // Append coin element to the DOM
+    this.collected = false
+  }
 
-  move() {
-    // Move the coin to the left
-    this.x -= this.speed;
-    this.element.style.left = this.x + "px";
+  move(currentTime) {
+    // Calculate elapsed time since the start time
+    const elapsedTime = currentTime - this.startTime;
 
-    // Check for collision with player
-    if (
-      this.x < player.offsetLeft + player.offsetWidth &&
-      this.x + this.width > player.offsetLeft &&
-      this.y < player.offsetTop + player.offsetHeight &&
-      this.y + this.height > player.offsetTop
-    ) {
-      // Collision detected, remove the coin
-      this.element.remove();
-      return true; // Return true to indicate collision
+    // Check if it's time for the coin to start moving
+    if (elapsedTime >= 0) {
+      // Move the coin to the left
+      this.x -= this.speed;
+      this.element.style.left = this.x + "px";
+
+      // Check for collision with player
+      if (
+        this.x < player.offsetLeft + player.offsetWidth &&
+        this.x + this.width > player.offsetLeft &&
+        this.y < player.offsetTop + player.offsetHeight &&
+        this.y + this.height > player.offsetTop
+      ) {
+        // Collision detected, remove the coin
+        this.element.remove();
+        return true; // Return true to indicate collision
+
+      }
+
+      // Check if the coin is out of the screen
+      if (this.x + this.width < 0) {
+        this.element.remove();
+        return true; // Return true to indicate that the coin is out of the screen
+      }
     }
 
-    return false; // Return false to indicate no collision
+    return false; // Return false to indicate no collision or out of screen yet
   }
 }
 
 // Usage example:
 // Create a new coin with start time 0 and y height 200
-const coin1 = new Coin(200, 500);
+const coin1 = new Coin(200, 600);
+const coin2 = new Coin(1000, 500); // Adjusted start time for coin2
 
 // Update loop to move the coin
-function update() {
-  // Move the coin
-  const collided = coin1.move();
-  if (collided) {
+function update(currentTime) {
+  // Move coin1
+  const collided1 = coin1.move(currentTime);
+  if (collided1 && !coin1.collected) {
     // Handle collision, e.g., increase score
-    console.log("Coin collected!");
+    score++; // Increase score
+    document.getElementById("score-value").textContent = score; // Update score display
+    coin1.collected = true; // Mark coin as collected
+    console.log("Coin 1 collected!");
   }
 
-  // Request the next frame
+  // Move coin2
+  const collided2 = coin2.move(currentTime);
+  if (collided2 && !coin2.collected) {
+    // Handle collision, e.g., increase score
+    score++; // Increase score
+    document.getElementById("score-value").textContent = score; // Update score display
+    coin2.collected = true; // Mark coin as collected
+    console.log("Coin 2 collected!");
+  }
   requestAnimationFrame(update);
 }
 
 // Start the update loop
-update();
+requestAnimationFrame(update);
 
 // }) else (!isLoaded) {
 //  display.canvas1 = 'visible'
