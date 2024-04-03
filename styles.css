@@ -60,11 +60,20 @@ body, html {
   }
 
   #score {
-    display:block;
-    position: relative;
+    display:flex;
+    padding: 10px;
+    -webkit-text-stroke: black 2px;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
     top: 0px;
     left: 20px;
     color: white;
     font-size: 28px;
+    font-family: Arial, sans-serif;
+  }
+
+  #score-value {
+    font-size: 58px;
     font-family: Arial, sans-serif;
   }

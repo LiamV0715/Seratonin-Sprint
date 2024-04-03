@@ -231,11 +231,11 @@ class Coin {
       // Check if the coin is out of the screen
       if (this.x + this.width < 0) {
         this.element.remove();
-        return true; // Return true to indicate that the coin is out of the screen
+        return false; // Return false so no points 
       }
     }
 
-    return false; // Return false to indicate no collision or out of screen yet
+    return false; // Return false to indicate no collision
   }
 }
 
