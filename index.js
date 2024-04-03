@@ -14,6 +14,8 @@ function newImage(url) {
 const player = newImage("assets/brain-right.png");
 const floor = document.getElementById("floor");
 let score = 0; //set score to 0 at start
+const coinSound = new Audio("assets/coin-get.wav");
+coinSound.volume = 0.2; // Set the volume to 20%
 
 let isJumping = false;
 let isCrouching = false;
@@ -274,6 +276,7 @@ function update(currentTime) {
     document.getElementById("score-value").textContent = score; // Update score display
     coin1.collected = true; // Mark coin as collected
     console.log("Coin 1 collected!");
+    coinSound.play();
   }
 
   // Move coin2
@@ -284,6 +287,7 @@ function update(currentTime) {
     document.getElementById("score-value").textContent = score; // Update score display
     coin2.collected = true; // Mark coin as collected
     console.log("Coin 2 collected!");
+    coinSound.play();
   }
   const collided3 = coin3.move(currentTime);
   if (collided3 && !coin3.collected) {
@@ -292,6 +296,7 @@ function update(currentTime) {
     document.getElementById("score-value").textContent = score; // Update score display
     coin3.collected = true; // Mark coin as collected
     console.log("Coin 3 collected!");
+    coinSound.play();
   }
 
   const collided4 = coin4.move(currentTime);
@@ -301,12 +306,14 @@ function update(currentTime) {
     document.getElementById("score-value").textContent = score; // Update score display
     coin4.collected = true; // Mark coin as collected
     console.log("Coin 4 collected!");
+    coinSound.play();
   }const collided5 = coin5.move(currentTime);
   if (collided5 && !coin5.collected) {
     score += 1;
     document.getElementById("score-value").textContent = score; // Update score display
     coin5.collected = true; // Mark coin as collected
     console.log("Coin 5 collected!");
+    coinSound.play();
   }
   const collided6 = coin6.move(currentTime);
   if (collided6 && !coin6.collected) {
@@ -314,6 +321,7 @@ function update(currentTime) {
     document.getElementById("score-value").textContent = score; // Update score display
     coin6.collected = true; // Mark coin as collected
     console.log("Coin 6 collected!");
+    coinSound.play();
   }
   const collided7 = coin7.move(currentTime);
   if (collided7 && !coin7.collected) {
@@ -321,6 +329,7 @@ function update(currentTime) {
     document.getElementById("score-value").textContent = score; // Update score display
     coin7.collected = true; // Mark coin as collected
     console.log("Coin 7 collected!");
+    coinSound.play();
   }
 
   const collided8 = coin8.move(currentTime);
@@ -329,6 +338,7 @@ function update(currentTime) {
     document.getElementById("score-value").textContent = score; // Update score display
     coin8.collected = true; // Mark coin as collected
     console.log("Coin 8 collected!");
+    coinSound.play();
   }
   const collided9 = coin9.move(currentTime);
   if (collided9 && !coin9.collected) {
@@ -337,6 +347,7 @@ function update(currentTime) {
     document.getElementById("score-value").textContent = score; // Update score display
     coin9.collected = true; // Mark coin as collected
     console.log("Coin 9 collected!");
+    coinSound.play();
   }
 
   const collided10 = coin10.move(currentTime);
@@ -345,13 +356,15 @@ function update(currentTime) {
     score += 1;
     document.getElementById("score-value").textContent = score; // Update score display
     coin10.collected = true; // Mark coin as collected
-    console.log("Coin 4 collected!");
+    console.log("Coin 10 collected!");
+    coinSound.play();
   }const collided11 = coin11.move(currentTime);
   if (collided11 && !coin11.collected) {
     score += 1;
     document.getElementById("score-value").textContent = score; // Update score display
     coin11.collected = true; // Mark coin as collected
     console.log("Coin 11 collected!");
+    coinSound.play();
   }
   const collided12 = coin12.move(currentTime);
   if (collided12 && !coin12.collected) {
@@ -359,66 +372,77 @@ function update(currentTime) {
     document.getElementById("score-value").textContent = score; 
     coin12.collected = true; 
     console.log("Coin 12 collected!");
+    coinSound.play();
   } const collided13 = coin13.move(currentTime);
   if (collided13 && !coin13.collected) {
     score += 1;
     document.getElementById("score-value").textContent = score; 
     coin13.collected = true; 
-    console.log("Coin 3 collected!");
+    console.log("Coin 13 collected!");
+    coinSound.play();
   } const collided14 = coin14.move(currentTime);
   if (collided14 && !coin14.collected) {
     score += 1;
     document.getElementById("score-value").textContent = score; 
     coin14.collected = true; 
     console.log("Coin 14 collected!");
+    coinSound.play();
   } const collided15 = coin15.move(currentTime);
   if (collided15 && !coin15.collected) {
     score += 1;
     document.getElementById("score-value").textContent = score; 
     coin15.collected = true; // Mark coin as collected
     console.log("Coin 15 collected!");
+    coinSound.play();
   } const collided16 = coin16.move(currentTime);
   if (collided16 && !coin16.collected) {
     score += 1;
     document.getElementById("score-value").textContent = score; 
     coin16.collected = true; // Mark coin as collected
     console.log("Coin 16 collected!");
+    coinSound.play();
   } const collided17 = coin17.move(currentTime);
   if (collided17 && !coin17.collected) {
     score += 1;
     document.getElementById("score-value").textContent = score; 
     coin17.collected = true; // Mark coin as collected
     console.log("Coin 17 collected!");
+    coinSound.play();
   } const collided18 = coin18.move(currentTime);
   if (collided18 && !coin18.collected) {
     score += 1;
     document.getElementById("score-value").textContent = score; 
     coin18.collected = true; // Mark coin as collected
     console.log("Coin 18 collected!");
+    coinSound.play();
   } const collided19 = coin19.move(currentTime);
   if (collided19 && !coin19.collected) {
     score += 1;
     document.getElementById("score-value").textContent = score; 
     coin19.collected = true; 
     console.log("Coin 19 collected!");
+    coinSound.play();
   } const collided20 = coin20.move(currentTime);
   if (collided20 && !coin20.collected) {
     score += 1;
     document.getElementById("score-value").textContent = score; 
     coin20.collected = true; 
     console.log("Coin 20 collected!");
+    coinSound.play();
   } const collided21 = coin21.move(currentTime);
   if (collided21 && !coin21.collected) {
     score += 1;
     document.getElementById("score-value").textContent = score; 
     coin21.collected = true; 
     console.log("Coin 21 collected!");
+    coinSound.play();
   } const collided22 = coin22.move(currentTime);
   if (collided22 && !coin22.collected) {
     score += 1;
     document.getElementById("score-value").textContent = score; 
     coin22.collected = true; // Mark coin as collected
     console.log("Coin 22 collected!");
+    coinSound.play();
   }
   requestAnimationFrame(update);
 }
