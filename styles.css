@@ -1,79 +1,87 @@
 body, html {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-  
-  #background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-image: url('assets/235059.png'); /* Replace 'background.jpg' with your background image */
-    background-repeat: repeat; /* Repeat the background horizontally */
-    animation: scrollBackground 10s linear infinite; /* Adjust animation duration as needed */
-  }
-  
-  @keyframes scrollBackground {
-    from {
-      background-position: 0 0;
-    }
-    to {
-      background-position: 100% 0;
-    }
-  }
-  
-  #game-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background-color: transparent; /* Set background color to transparent */
-  }
-  
-  #player {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    bottom: 0;
-    left: 50px; /* Initial position */
-  }
-  
-  #floor {
-    position: absolute;
-    width: 100%;
-    height: 40px;
-    background-color: #2E8B57; /* Sea green */
-    bottom: 0;
-  }
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
 
-  #canvas1 {
-    background-color: none;
-    fill: aqua;
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: url("assets/235059.png") repeat-x;
+    height: 1000px;
+    width: 7680px;
+    animation: slide 5s linear infinite; /* Adjust animation duration as needed */
+}
+@keyframes slide {
+  0% {
+    transform: translate(0);
   }
+  100% {
+    transform: translate(-3840px); /* The image width */
+  }
+}
+@keyframes scrollBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
 
-  #coin {
-    
-    animation: backwards;
-    position: absolute;
-  }
+#game-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: transparent; /* Set background color to transparent */
+}
 
-  #score {
-    display:flex;
-    padding: 10px;
-    -webkit-text-stroke: black 2px;
-    justify-content: space-around;
-    align-items: center;
-    position: absolute;
-    top: 0px;
-    left: 20px;
-    color: white;
-    font-size: 28px;
-    font-family: Arial, sans-serif;
-  }
+#player {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  bottom: 0;
+  left: 50px; /* Initial position */
+}
 
-  #score-value {
-    font-size: 58px;
-    font-family: Arial, sans-serif;
-  }
+#floor {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  background-color: #2E8B57; /* Sea green */
+  bottom: 0;
+}
+
+#canvas1 {
+  background-color: none;
+  fill: aqua;
+}
+
+#coin {
+  
+  animation: backwards;
+  position: absolute;
+}
+
+#score {
+  display:flex;
+  padding: 10px;
+  -webkit-text-stroke: black 2px;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+  left: 20px;
+  color: white;
+  font-size: 28px;
+  font-family: Arial, sans-serif;
+}
+
+#score-value {
+  font-size: 58px;
+  font-family: Arial, sans-serif;
+}
