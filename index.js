@@ -14,9 +14,11 @@ function newImage(url) {
 const player = newImage("assets/brain-right.png");
 player.style.display = "hidden";
 const floor = document.getElementById("floor");
+const floorHeight = parseInt(getComputedStyle(floor).height);
 let score = 0; //set score to 0 at start
 const coinSound = new Audio("assets/alarm shortencoin-get.wav");
 coinSound.volume = 0.5; // Set the volume to 50%
+
 
 let isJumping = false;
 let isCrouching = false;
@@ -143,7 +145,6 @@ function jump() {
 }
 
 function glideDown() {
-  const floorHeight = "40px" || 0;
   let currentHeight = parseInt(player.style.bottom) || 0;
 
   function animateGlide() {
@@ -152,6 +153,8 @@ function glideDown() {
 
     if (currentHeight > floorHeight) {
       requestAnimationFrame(animateGlide);
+    } else if (currentHeight < floorHeight) {
+      player.style.bottom = '40px';
     }
   }
 
