@@ -12,10 +12,11 @@ function newImage(url) {
 }
 
 const player = newImage("assets/brain-right.png");
+player.style.display = "hidden";
 const floor = document.getElementById("floor");
 let score = 0; //set score to 0 at start
 const coinSound = new Audio("assets/alarm shortencoin-get.wav");
-coinSound.volume = 1; // Set the volume to 50%
+coinSound.volume = 0.5; // Set the volume to 50%
 
 let isJumping = false;
 let isCrouching = false;
@@ -35,6 +36,15 @@ document.addEventListener("keydown", (event) => {
       isJumping = true;
       jump();
     }
+  } else if (event.key === 'e') {
+    // 'w' key or spacebar for jumping
+    gameStart = true;
+    document.getElementById("menu").style.display = "none";
+    player.style.display = 'visible';
+    menuStart();
+    currentTime = 0 ;
+    elapsedTime = 0 ;
+    requestAnimationFrame(update);
   } else if (event.key === "s") {
     // 's' for crouching
 
@@ -266,6 +276,18 @@ const coin20 = new Coin(64000, 500);
 const coin21 = new Coin(64500, 600);
 const coin22 = new Coin(68000, 500);
 
+//a menu where they have to press enter before the update function (gameloop) starts
+
+function menuStart() {
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      // 'w' key or spacebar for jumping
+      gameStart = true;
+      ocument.getElementById("menu").style.display = "none";
+    }
+  });
+}
+
 // Update loop to move the coin
 function update(currentTime) {
   // Move coin1
@@ -459,7 +481,7 @@ function update(currentTime) {
   requestAnimationFrame(update);
 }
 // Start the update loop
-requestAnimationFrame(update);
+
 
 // }) else (!isLoaded) {
 //  display.canvas1 = 'visible'

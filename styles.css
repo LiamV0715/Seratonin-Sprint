@@ -14,7 +14,7 @@ body, html {
   background: url("assets/JS Game background v1.png") repeat-x;
     height: 1000px;
     width: 7680px;
-    animation: slide 5s linear infinite; /* Adjust animation duration as needed */
+    animation: slide 7s linear infinite; /* Adjust animation duration as needed */
 }
 @keyframes slide {
   0% {
@@ -46,6 +46,7 @@ body, html {
   height: 200px;
   bottom: 0;
   left: 50px; /* Initial position */
+  display: none;
 }
 
 #floor {
@@ -69,20 +70,37 @@ body, html {
 }
 
 #score {
-  display:flex;
+  display: flex;
   padding: 10px;
   -webkit-text-stroke: black 2px;
   justify-content: space-around;
   align-items: center;
-  position: absolute;
+  position: fixed;
   top: 0px;
   left: 20px;
   color: white;
   font-size: 28px;
   font-family: Arial, sans-serif;
+  border-radius: 25px solid black;
 }
 
 #score-value {
   font-size: 58px;
   font-family: Arial, sans-serif;
+}
+
+#menu {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: papayawhip;
+  width: 40%;
+  flex-direction: column;
+  height: 40%;
+  padding: 20%
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
 }
