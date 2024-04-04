@@ -153,7 +153,7 @@ function glideDown() {
 
     if (currentHeight > floorHeight) {
       requestAnimationFrame(animateGlide);
-    } else if (currentHeight < floorHeight) {
+    } else if (currentHeight < floorHeight) { //this fixes them going through the floor (idk why they did)
       player.style.bottom = '40px';
     }
   }
@@ -264,20 +264,20 @@ const coin5 = new Coin(5000, 500);
 const coin6 = new Coin(5500, 600);
 const coin7 = new Coin(6000, 700);
 const coin8 = new Coin(6000, 500);
-const coin9 = new Coin(6500, 800);
-const coin10 = new Coin(40200, 500);
-const coin11 = new Coin(45000, 600);
-const coin12 = new Coin(50000, 500);
-const coin13 = new Coin(10000, 600); //arc start
-const coin14 = new Coin(10050, 400); //brief arc
-const coin15 = new Coin(10100, 300); //peak
-const coin16 = new Coin(10150, 400); //arc down
-const coin17 = new Coin(10200, 600); //arc end
-const coin18 = new Coin(103000, 500);
-const coin19 = new Coin(103250, 600);
-const coin20 = new Coin(64000, 500);
-const coin21 = new Coin(64500, 600);
-const coin22 = new Coin(68000, 500);
+const coin9 = new Coin(7000, 800);
+const coin10 = new Coin(7500, 500);
+const coin11 = new Coin(8700, 400);
+const coin12 = new Coin(9600, 400);
+const coin13 = new Coin(10500, 700); //arc start
+const coin14 = new Coin(11000, 500); //brief arc
+const coin15 = new Coin(11500, 300); //peak
+const coin16 = new Coin(12000, 500); //arc down
+const coin17 = new Coin(12500, 700); //arc end
+const coin18 = new Coin(14000, 500);
+const coin19 = new Coin(14400, 600);
+const coin20 = new Coin(15000, 350);
+const coin21 = new Coin(16000,350);
+const coin22 = new Coin(19000, 500);
 
 //a menu where they have to press enter before the update function (gameloop) starts
 
