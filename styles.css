@@ -93,14 +93,49 @@ body, html {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  background-color: papayawhip;
-  width: 40%;
+  width: 30%;
   flex-direction: column;
-  height: 40%;
-  padding: 20%
+  height: 100px;
+  padding: 20%;
+  border-radius: 25px;
 }
 
 .menu-items {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  
+}
+
+h1 {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+#menu-pic {
+  display: flex;
+  position: fixed;
+  height: 60%;
+  margin: auto;
+  width: 60%;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+  -webkit-animation: rainbow 4s steps(36) infinite;
+}
+@-webkit-keyframes rainbow {
+  from { -webkit-filter:hue-rotate(10deg); }
+    to { -webkit-filter:hue-rotate(360deg); }
+}
+
+@keyframes rainbow {
+from {
+   -webkit-filter:hue-rotate(10deg);
+           filter:hue-rotate(10deg);
+   }
+ to {
+   -webkit-filter:hue-rotate(360deg);
+           filter:hue-rotate(360deg);
+   }
 }
