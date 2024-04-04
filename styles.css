@@ -139,3 +139,20 @@ from {
            filter:hue-rotate(360deg);
    }
 }
+
+#wasd {
+  position: absolute;
+  margin-left: 200px;
+  bottom: 70%;
+  max-width: 350px;
+  max-height: 350px;
+}
+
+#info {
+  position: absolute;
+  margin-right: 200px;
+  bottom: 50%;
+  left: 1%;
+  max-width: 400px;
+  max-height: 400px;
+}
