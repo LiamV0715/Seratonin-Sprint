@@ -17,9 +17,9 @@ const floor = document.getElementById("floor");
 const floorHeight = parseInt(getComputedStyle(floor).height);
 let score = 0; //set score to 0 at start
 const coinSound = new Audio("assets/alarm shortencoin-get.wav");
-coinSound.volume = 0.5; // Set the volume to 50%
+coinSound.volume = 0; // Set the volume to 50%
 
-
+let gameStart = false;
 let isJumping = false;
 let isCrouching = false;
 let isMovingLeft = false;
@@ -39,14 +39,15 @@ document.addEventListener("keydown", (event) => {
       jump();
     }
   } else if (event.key === 'e') {
-    // 'w' key or spacebar for jumping
+    // 'e' key to start gameg
     gameStart = true;
+    startTime = performance.now();
     document.getElementById("menu").style.display = "none";
     player.style.display = 'visible';
     menuStart();
     currentTime = 0 ;
     elapsedTime = 0 ;
-    requestAnimationFrame(update);
+    update(currentTime);
   } else if (event.key === "s") {
     // 's' for crouching
 
@@ -255,7 +256,7 @@ class Coin {
 }
 
 // Usage example:
-// Create a new coin with start time 0 and y height 200
+// Create a list of new coins with start time and starting y height (px from top)
 const coin1 = new Coin(100, 600);
 const coin2 = new Coin(1000, 500); // Adjusted start time for coin2
 const coin3 = new Coin(3000, 700);
@@ -267,13 +268,13 @@ const coin8 = new Coin(6000, 500);
 const coin9 = new Coin(7000, 800);
 const coin10 = new Coin(7500, 500);
 const coin11 = new Coin(8700, 400);
-const coin12 = new Coin(9600, 400);
+const coin12 = new Coin(9500, 700);
 const coin13 = new Coin(10500, 700); //arc start
-const coin14 = new Coin(11000, 500); //brief arc
-const coin15 = new Coin(11500, 300); //peak
-const coin16 = new Coin(12000, 500); //arc down
-const coin17 = new Coin(12500, 700); //arc end
-const coin18 = new Coin(14000, 500);
+const coin14 = new Coin(11500, 500); //brief arc
+const coin15 = new Coin(12500, 300); //peak
+const coin16 = new Coin(13500, 500); //arc down
+const coin17 = new Coin(14500, 700); //arc end
+const coin18 = new Coin(15500, 700);
 const coin19 = new Coin(14400, 600);
 const coin20 = new Coin(15000, 350);
 const coin21 = new Coin(16000,350);
@@ -284,15 +285,18 @@ const coin22 = new Coin(19000, 500);
 function menuStart() {
   document.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
-      // 'w' key or spacebar for jumping
+      // e to start game
       gameStart = true;
-      ocument.getElementById("menu").style.display = "none";
+      startTime = performance.now();
+      document.getElementById("menu").style.display = "none";
     }
   });
 }
 
 // Update loop to move the coin
 function update(currentTime) {
+  if (!gameStart) return;
+  
   // Move coin1
   const collided1 = coin1.move(currentTime);
   if (collided1 && !coin1.collected) {
@@ -481,11 +485,15 @@ function update(currentTime) {
     console.log("Coin 22 collected!");
     coinSound.play();
   }
+  const winCondition = (score >= 20);
+  if (winCondition) {
+    victory();
+  }
   requestAnimationFrame(update);
 }
-// Start the update loop
 
-
-// }) else (!isLoaded) {
-//  display.canvas1 = 'visible'
-// }
+//add a win screen function
+const winCondition = (score >= 20)
+function victory () {
+  document.getElementById('win-screen').style.display = 'block';
+}
