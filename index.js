@@ -497,3 +497,5 @@ const winCondition = (score >= 20)
 function victory () {
   document.getElementById('win-screen').style.display = 'block';
 }
+
+
