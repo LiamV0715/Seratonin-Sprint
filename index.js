@@ -45,8 +45,19 @@ const floor = document.getElementById("floor");
 const floorHeight = parseInt(getComputedStyle(floor).height);
 let score = 0; //set score to 0 at start
 const coinSound = new Audio("assets/alarm shortencoin-get.wav");
-coinSound.volume = 0; // Set the volume to 50%
+coinSound.volume = 0.5; // Set the volume to 50%
 let startTime = 0;
+var menuMusic = new Audio("assets/menu-music.wav");
+menuMusic.volume = 0.1; 
+var sprintMusic = new Audio('assets/sprinting-music-fix.wav')
+sprintMusic.volume = 0; //set sprint music to no volume, switch the volumes when they press e, win or lose
+document.body.appendChild(menuMusic);
+document.body.appendChild(sprintMusic);
+
+
+
+
+
 
 let gameStart = false;
 let isJumping = false;
@@ -103,6 +114,8 @@ document.addEventListener("keydown", (event) => {
     isFacingRight = true;
     isFacingLeft = false;
     isMovingLeft = false;
+    menuMusic.play();
+    sprintMusic.play(); 
     if (isCrouching) {
       player.src = "assets/crouch-brain-right.png";
     } else {
@@ -295,6 +308,8 @@ function menuStart() {
     if (event.key === "Enter") {
       // e to start game
       gameStart = true;
+      menuMusic.volume = 0;
+      sprintMusic.volume = 0.2;
       startTime = performance.now();
       document.getElementById("menu").style.display = "none";
     }
@@ -304,7 +319,8 @@ function menuStart() {
 // Update loop to move the coin
 function update() {
   if (!gameStart) return;
-
+  menuMusic.volume = 0;
+  sprintMusic.volume = 0.1;
   for (const coin of coins) {
     const collided1 = coin.move();
     if (collided1 && !coin.collected) {
@@ -320,6 +336,8 @@ function update() {
   if (winCondition) {
     victory();
   }
+  // const loseTime = 
+  // if ()
   requestAnimationFrame(update);
 }
 
