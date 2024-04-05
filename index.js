@@ -54,11 +54,6 @@ sprintMusic.volume = 0; //set sprint music to no volume, switch the volumes when
 document.body.appendChild(menuMusic);
 document.body.appendChild(sprintMusic);
 
-
-
-
-
-
 let gameStart = false;
 let isJumping = false;
 let isCrouching = false;
@@ -336,8 +331,10 @@ function update() {
   if (winCondition) {
     victory();
   }
-  // const loseTime = 
-  // if ()
+  const loseTime = performance.now() >= startTime + 22000;
+  if (loseTime && !winCondition) {
+     defeat();
+  }
   requestAnimationFrame(update);
 }
 
@@ -345,4 +342,8 @@ function update() {
 const winCondition = score >= 20;
 function victory() {
   document.getElementById("win-screen").style.display = "block";
+}
+
+function defeat() {
+  document.getElementById("lose-screen").style.display = "block";
 }
