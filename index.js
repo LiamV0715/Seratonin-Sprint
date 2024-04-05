@@ -7,7 +7,8 @@ function newImage(url) {
   let image = document.createElement("img");
   image.src = url;
   image.style.position = "absolute";
-  document.body.append(image);
+  let gameContainer = document.getElementById('game-container');
+  gameContainer.append(image);
   return image;
 }
 
@@ -32,18 +33,17 @@ const maxSpeed = 1; // Adjust maximum speed as needed
 //defining character to change when moving
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "w" || event.key === " ") {
+  if (event.key === "w" || event.key === " " || event.key === 'W') {
     // 'w' key or spacebar for jumping
     if (!isJumping && !isCrouching) {
       isJumping = true;
       jump();
     }
   } else if (event.key === "e") {
-    // 'e' key to start gameg
+    // 'e' key to start game
     gameStart = true;
     startTime = performance.now();
     document.getElementById("menu").style.display = "none";
-    player.style.display = "visible";
     menuStart();
     currentTime = 0;
     elapsedTime = 0;
@@ -219,7 +219,8 @@ class Coin {
     this.element.style.height = this.height + "px"; // Set height
     this.element.style.top = this.y + "px"; // Set initial y position
     this.element.style.left = this.x + "px"; // Set initial x position
-    document.body.appendChild(this.element); // Append coin element to the DOM
+    let gameContainer = document.getElementById('game-container');
+    gameContainer.appendChild(this.element); // Append coin element to the DOM
     this.collected = false;
   }
 
@@ -284,10 +285,9 @@ const coin22 = new Coin(19000, 500);
 
 function menuStart() {
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
+    if (event.key === "e") {
       // e to start game
       gameStart = true;
-      startTime = performance.now();
       document.getElementById("menu").style.display = "none";
     }
   });
@@ -295,8 +295,6 @@ function menuStart() {
 
 // Update loop to move the coin
 function update(currentTime) {
-  if (!gameStart) return;
-
   // Move coin1
   const collided1 = coin1.move(currentTime);
   if (collided1 && !coin1.collected) {
