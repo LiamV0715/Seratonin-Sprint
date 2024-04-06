@@ -83,7 +83,7 @@ document.addEventListener("keydown", (event) => {
       isJumping = true;
       jump();
     }
-  } else if (event.key === "e") {
+  } else if (event.key === "e" && !gameStart) {
     // 'e' key to start gameg
     gameStart = true;
     startTime = performance.now();
