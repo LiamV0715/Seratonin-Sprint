@@ -48,8 +48,8 @@ const coinSound = new Audio("assets/alarm shortencoin-get.wav");
 coinSound.volume = 0.5; // Set the volume to 50%
 let startTime = 0;
 var menuMusic = new Audio("assets/menu-music.wav");
-menuMusic.volume = 0.1; 
-var sprintMusic = new Audio('assets/sprinting-music-fix.wav')
+menuMusic.volume = 0.1;
+var sprintMusic = new Audio("assets/sprinting-music-fix.wav");
 sprintMusic.volume = 0; //set sprint music to no volume, switch the volumes when they press e, win or lose
 document.body.appendChild(menuMusic);
 document.body.appendChild(sprintMusic);
@@ -110,7 +110,7 @@ document.addEventListener("keydown", (event) => {
     isFacingLeft = false;
     isMovingLeft = false;
     menuMusic.play();
-    sprintMusic.play(); 
+    sprintMusic.play();
     if (isCrouching) {
       player.src = "assets/crouch-brain-right.png";
     } else {
@@ -264,7 +264,7 @@ class Coin {
     const now = performance.now();
     const startMovingTime = startTime + this.coinTime;
     const elapsedTime = performance.now() - startMovingTime;
-    console.log({startMovingTime, elapsedTime, now});
+    console.log({ startMovingTime, elapsedTime, now });
     // Check if it's time for the coin to start moving
     if (elapsedTime >= 0) {
       // Move the coin to the left
@@ -333,7 +333,7 @@ function update() {
   }
   const loseTime = performance.now() >= startTime + 22000;
   if (loseTime && !winCondition) {
-     defeat();
+    defeat();
   }
   requestAnimationFrame(update);
 }

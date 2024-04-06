@@ -99,12 +99,24 @@ html {
   height: 100px;
   padding: 20%;
   border-radius: 25px;
+  font-size: 30px;
+  color: white;
+  text-decoration: underline;
+  font-family: impact, sans-serif;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: black;
+  text-align: left;
 }
 
 .menu-items {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#menu-text {
+  position: absolute;
+  left: 10px;
 }
 
 h1 {
@@ -230,7 +242,7 @@ h1 {
 
 #win-screen {
   display: none;
-  background-image: url('assets/brain-win.gif');
+  background-image: url("assets/brain-win.gif");
   background-attachment: fixed;
   background-size: cover;
   width: 100%;
@@ -257,7 +269,7 @@ h2 {
 
 #lose-screen {
   display: none;
-  background-image: url('assets/lose-screen.gif');
+  background-image: url("assets/lose-screen.gif");
   background-attachment: fixed;
   background-size: cover;
   width: 100%;
