@@ -44,15 +44,25 @@ player.style.display = "hidden";
 const floor = document.getElementById("floor");
 const floorHeight = parseInt(getComputedStyle(floor).height);
 let score = 0; //set score to 0 at start
+
 const coinSound = new Audio("assets/alarm shortencoin-get.wav");
 coinSound.volume = 0.5; // Set the volume to 50%
 let startTime = 0;
+
 var menuMusic = new Audio("assets/menu-music.wav");
 menuMusic.volume = 0.1;
-var sprintMusic = new Audio("assets/sprinting-music-fix.wav");
+var sprintMusic = new Audio("assets/sprint-sound-final.wav");
 sprintMusic.volume = 0; //set sprint music to no volume, switch the volumes when they press e, win or lose
 document.body.appendChild(menuMusic);
 document.body.appendChild(sprintMusic);
+
+const winNoise = new Audio("assets/win-sound.wav");
+const loseNoise = new Audio("assets/lose-sound.wav");
+winNoise.volume = 0.1;
+loseNoise.volume = 0.2;
+loseNoise.loop = false;
+winNoise.loop = false;
+
 
 let gameStart = false;
 let isJumping = false;
@@ -342,8 +352,15 @@ function update() {
 const winCondition = score >= 20;
 function victory() {
   document.getElementById("win-screen").style.display = "flex";
+  winNoise.play();
+  winNoise.setLoop(false);
+  return winNoise;
 }
+
 
 function defeat() {
   document.getElementById("lose-screen").style.display = "flex";
+  loseNoise.play();
+  loseNoise.setLoop(false);
+  return loseNoise;
 }
