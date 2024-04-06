@@ -341,9 +341,9 @@ function update() {
 //add a win screen function
 const winCondition = score >= 20;
 function victory() {
-  document.getElementById("win-screen").style.display = "block";
+  document.getElementById("win-screen").style.display = "flex";
 }
 
 function defeat() {
-  document.getElementById("lose-screen").style.display = "block";
+  document.getElementById("lose-screen").style.display = "flex";
 }
