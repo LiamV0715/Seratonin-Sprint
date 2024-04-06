@@ -77,13 +77,13 @@ const maxSpeed = 1; // Adjust maximum speed as needed
 //defining character to change when moving
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "w" || event.key === " ") {
+  if (event.key === "w" || event.key === " " || event.key === "W") {
     // 'w' key or spacebar for jumping
     if (!isJumping && !isCrouching) {
       isJumping = true;
       jump();
     }
-  } else if (event.key === "e" && !gameStart) {
+  } else if ((event.key === "e" && !gameStart) || (event.key === "E" && !gameStart)) {
     // 'e' key to start gameg
     gameStart = true;
     startTime = performance.now();
@@ -92,7 +92,7 @@ document.addEventListener("keydown", (event) => {
     menuStart();
     generateCoins();
     update();
-  } else if (event.key === "s") {
+  } else if (event.key === "s"  || event.key === "S") {
     // 's' for crouching
 
     isCrouching = true;
@@ -103,7 +103,7 @@ document.addEventListener("keydown", (event) => {
       player.src = "assets/crouch-brain-right.png";
       isFacingRight = true;
     }
-  } else if (event.key === "a") {
+  } else if (event.key === "a"  || event.key === "A") {
     isMovingLeft = true;
     isFacingLeft = true;
     isFacingRight = false;
@@ -114,7 +114,7 @@ document.addEventListener("keydown", (event) => {
       player.src = "assets/fast-brain-left.png";
     }
     moveLeft();
-  } else if (event.key === "d") {
+  } else if (event.key === "d"  || event.key === "D") {
     isMovingRight = true;
     isFacingRight = true;
     isFacingLeft = false;
@@ -131,7 +131,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 document.addEventListener("keyup", (event) => {
-  if (event.key === "s") {
+  if (event.key === "s"  || event.key === "S") {
     // Restore player height when 's' key is released
     isCrouching = false;
     player.style.height = "200px";
@@ -145,7 +145,7 @@ document.addEventListener("keyup", (event) => {
       player.src = "assets/brain-right.png";
       isFacingRight = true;
     }
-  } else if (event.key === "a") {
+  } else if (event.key === "a" || event.key === "A") {
     // Stop moving left when 'a' key is released
     isMovingLeft = false;
     isFacingLeft = true;
@@ -154,7 +154,7 @@ document.addEventListener("keyup", (event) => {
     } else {
       player.src = "assets/brain-left.png";
     }
-  } else if (event.key === "d") {
+  } else if (event.key === "d" || event.key === "D") {
     // Stop moving right when 'd' key is released
     isMovingRight = false;
     isFacingRight = true;
