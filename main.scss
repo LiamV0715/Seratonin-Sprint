@@ -1,0 +1,12 @@
+@import 'variables';
+@import 'mixins';
+@import 'functions';
+@import 'menu';
+@import 'game';
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}

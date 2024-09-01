@@ -1,0 +1,52 @@
+@import 'variables';
+@import 'mixins';
+
+#background {
+  @include size(7680px, 1000px);
+  animation: slide 7s linear infinite;
+
+  @keyframes slide {
+    0% { transform: translate(0); }
+    100% { transform: translate(-3840px); }
+  }
+}
+
+#game-container {
+  @include size(100%, 100vh);
+}
+
+#player {
+  @include size($player-size, $player-size);
+  bottom: 0;
+  left: 50px;
+  display: none;
+}
+
+#floor {
+  @include size(100%, $floor-height);
+  background-color: $secondary-color;
+}
+
+#coin {
+  border-radius: 25px;
+  position: absolute;
+  animation: backwards;
+}
+
+#score {
+  display: flex;
+  padding: 10px;
+  color: $primary-color;
+  font-size: 28px;
+  font-family: $font-family;
+  @include text-stroke($secondary-color, 2px);
+  position: fixed;
+  top: 0px;
+  left: 20px;
+
+  #score-value {
+    font-size: 58px;
+  }
+}
+
+@error "Invalid size value in #floor";

@@ -1,0 +1,37 @@
+@import 'variables';
+@import 'mixins';
+
+#menu {
+  width: $menu-width;
+  padding: 20%;
+  font-family: $font-family;
+  @include text-stroke($secondary-color, $font-stroke-width);
+
+  .menu-items {
+    @include center-content;
+    flex-direction: column;
+  }
+
+  #menu-pic {
+    position: absolute;
+    height: 60%;
+    bottom: 50px;
+    width: 60%;
+    z-index: -1;
+    @include animation(rainbow, $animation-duration);
+  }
+
+  #wasd {
+    position: absolute;
+    margin-left: 200px;
+    bottom: 65%;
+    @include size($max-width, $max-height);
+  }
+
+  #info {
+    position: absolute;
+    left: 1%;
+    @include size($max-width, $max-height);
+    @include animation(bounce, $animation-duration);
+  }
+}

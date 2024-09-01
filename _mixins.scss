@@ -1,0 +1,19 @@
+@mixin center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @mixin text-stroke($color, $width) {
+    -webkit-text-stroke: $width $color;
+  }
+  
+  @mixin animation($name, $duration, $timing: linear, $iteration: infinite) {
+    animation: $name $duration $timing $iteration;
+  }
+  
+  @mixin size($width, $height) {
+    width: $width;
+    height: $height;
+  }
+  
