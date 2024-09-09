@@ -21,7 +21,9 @@ Seratonin Sprint is designed with fluid animations, engaging UI, and responsive 
 Technologies
 
 JavaScript: Core functionality and game logic.
+
 SCSS: For styling, utilizing variables, mixins, nested selectors, and keyframes.
+
 HTML: Game layout and structure.
 
 Installation and Setup
