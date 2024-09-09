@@ -44,7 +44,7 @@ npx sass ./src/scss/main.scss ./src/css/style.css --watch
 
 Open the game:
 
-Open index.html in your browser to start playing the game.
+Open index.html by running "npx serve ." in your terminal and following the link to start playing!
 Controls:
 W ---- to jump
 D ---- move right and start music

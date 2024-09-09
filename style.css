@@ -1,18 +1,104 @@
-/* Error: "Invalid size value in #floor"
- *    ,
- * 52 | @error "Invalid size value in #floor";
- *    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- *    '
- *   _game.scss 52:1  @import
- *   main.scss 5:9    root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: 'Error: "Invalid size value in #floor"\a    \2577 \a 52 \2502  @error "Invalid size value in #floor";\a    \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   _game.scss 52:1  @import\a   main.scss 5:9    root stylesheet';
+#menu {
+  width: 30%;
+  padding: 20%;
+  font-family: "Arial, sans-serif";
+  -webkit-text-stroke: 3px #000;
 }
+#menu .menu-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#menu #menu-pic {
+  position: absolute;
+  height: 60%;
+  bottom: 50px;
+  width: 60%;
+  z-index: -1;
+  animation: rainbow 2s linear infinite;
+}
+#menu #wasd {
+  position: absolute;
+  margin-left: 200px;
+  bottom: 65%;
+  width: 400px;
+  height: 400px;
+}
+#menu #info {
+  position: absolute;
+  left: 1%;
+  width: 400px;
+  height: 400px;
+  animation: bounce 2s linear infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(-3840px);
+  }
+}
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: url("assets/JS Game background v1.png") repeat-x;
+  height: 1000px;
+  width: 7680px;
+  animation: slide 7s linear infinite;
+}
+
+#game-container {
+  width: 100%;
+  height: 100vh;
+}
+
+#player {
+  width: 200px;
+  height: 200px;
+  bottom: 0;
+  left: 50px;
+  display: none;
+}
+
+#floor {
+  width: 100%;
+  height: 40px;
+  background-color: #000;
+}
+
+#coin {
+  border-radius: 25px;
+  position: absolute;
+  animation: backwards;
+}
+
+#score {
+  display: flex;
+  padding: 10px;
+  color: #fff;
+  font-size: 28px;
+  font-family: "Arial, sans-serif";
+  -webkit-text-stroke: 2px #000;
+  position: fixed;
+  top: 0px;
+  left: 20px;
+}
+#score #score-value {
+  font-size: 58px;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/*# sourceMappingURL=style.css.map */
