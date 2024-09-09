@@ -34,11 +34,21 @@
   left: 50px;
   display: none;
 }
-
+$floor-height: 0px;
 #floor {
-  @include size(100%, $floor-height);
-  background-color: $secondary-color;
+  position: fixed;
+  width: 100%;
+  height: $floor-height;
+  background-color: #000000;
+  bottom: 5px;
+  z-index: 5;
+
+  // Ensure the height matches the specified value
+  @if height != $floor-height {
+    @warn "The height of #floor should be #{$floor-height}.";
+  }
 }
+
 
 #coin {
   border-radius: 25px;
@@ -48,17 +58,22 @@
 
 #score {
   display: flex;
-  padding: 10px;
-  color: $primary-color;
-  font-size: 28px;
-  font-family: $font-family;
-  @include text-stroke($secondary-color, 2px);
+  align-items: center;
+  justify-content: space-around;
   position: fixed;
-  top: 0px;
+  top: 10px; /* Adjust as needed */
   left: 20px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: adds a background to see the element */
+  color: white;
+  font-size: 28px;
+  font-family: Arial, sans-serif;
+  border-radius: 25px;
+  -webkit-text-stroke: black 2px;
+}
 
   #score-value {
     font-size: 58px;
   }
-}
+
 
