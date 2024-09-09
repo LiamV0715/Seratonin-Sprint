@@ -1,4 +1,5 @@
 Seratonin Sprint
+
 The game where you (a brain) have to go get some yummy seratonin or you may become sad. 
 A scrolling background brings you through neurons and time as you collect the molecules of seratonin, 
 but watch out! If you don't get enough seratonin during the course, you'll become sad! 
@@ -6,6 +7,7 @@ If you grab 20 seratonin coins by the end of the course you win!
 
 
 Description
+
 In Seratonin Sprint, players control a character running through a scrolling background while collecting items for points. The game features an intuitive control system with responsive animations, vibrant visuals, and a rewarding gameplay loop. Aim to reach the goal while avoiding hazards, and unlock win/lose screens based on your performance.
 
 Key features include:
@@ -17,29 +19,24 @@ Animated win and lose screens for game completion.
 Seratonin Sprint is designed with fluid animations, engaging UI, and responsive controls that enhance the user experience.
 
 Technologies
+
 JavaScript: Core functionality and game logic.
 SCSS: For styling, utilizing variables, mixins, nested selectors, and keyframes.
 HTML: Game layout and structure.
 
 Installation and Setup
-To get started with Seratonin Sprint, follow these steps:
 
 Clone the repository:
 
-bash
-Copy code
 git clone https://github.com/yourusername/seratonin-sprint.git
 Install dependencies:
 
-bash
-Copy code
 npm init -y
 npm install sass
 Compile SCSS to CSS:
 
 Run the following command to watch and compile SCSS:
-bash
-Copy code
+
 npx sass ./src/scss/main.scss ./src/css/style.css --watch
 
 Open the game:
